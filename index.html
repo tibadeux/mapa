@@ -84,23 +84,6 @@
             'Stamen Toner': defaultBase
         };
 
-        //ESRI ArcGIS layers from Hawaii GIS Program; dynamic layer example
-        //Using a relative url to call layer instead of http
-        var WaterQualSites = L.esri.dynamicMapLayer({
-            url: '//geodata.hawaii.gov/arcgis/rest/services/HumanHealthSafety/MapServer',
-            layers: [2],
-            useCors: false
-        });
-
-        //add popup to Water quality sites dynamic map layer
-        WaterQualSites.bindPopup(function(error, featureCollection) {
-            if (error || featureCollection.features.length === 0) {
-                return false;
-            } else {
-                return 'Name: ' + featureCollection.features[0].properties.name + '<br>' + 'ID: ' + featureCollection.features[0].properties.identifier;
-            }
-        });
-
         //ESRI ArcGIS layers from Hawaii GIS Program; polygon feature layer example
         //Using a relative url to call layer instead of http
         var AgBaseline = L.esri.featureLayer({
