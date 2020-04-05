@@ -77,11 +77,11 @@
         var defaultBase = L.tileLayer.provider('Stamen.TonerLite').addTo(map);
 
         var baseLayers = {
-            'Stamen Toner': defaultBase,
             'USGS TNM': L.tileLayer.provider('USGSTNM'),
             'ESRI Imagery': L.tileLayer.provider('Esri.WorldImagery'),
             'ESRI Ocean Basemap': L.tileLayer.provider('Esri.OceanBasemap'),
-            'OSM Topo': L.tileLayer.provider('OpenTopoMap')
+            'OSM Topo': L.tileLayer.provider('OpenTopoMap'),
+            'Stamen Toner': defaultBase
         };
 
         //ESRI ArcGIS layers from Hawaii GIS Program; dynamic layer example
