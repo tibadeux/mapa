@@ -84,82 +84,8 @@
             'Stamen Toner': defaultBase
         };
 
-        //ESRI ArcGIS layers from Hawaii GIS Program; polygon feature layer example
-        //Using a relative url to call layer instead of http
-        var AgBaseline = L.esri.featureLayer({
-            url: '//geodata.hawaii.gov/arcgis/rest/services/LandUseLandCover/MapServer/4',
-            style: function(feature) {
-                return {
-                    fillOpacity: 0.5
-                }
-            }
-        });
-
-        //add popup to AgBaseline feature layer
-        AgBaseline.bindPopup(function(evt) {
-            return L.Util.template('<p>{cropcatego}<br>{island}</p>', evt.feature.properties);
-        });
-
-        //ESRI ArcGIS layers from Hawaii GIS Program; line feature layer example; can override the styling
-        //Using a relative url to call layer
-        var Trails = L.esri.featureLayer({
-            url: '//geodata.hawaii.gov/arcgis/rest/services/Terrestrial/MapServer/34',
-            style: function(feature) {
-                return {
-                    color: '#328000',
-                    weight: 2
-                }
-            }
-        });
-
-        //PacIOOS GeoServer Example; adding a single layer with properties
-        //Using a relative url to call layer instead of http
-        var EconSeaLevRise = L.tileLayer.wms('http://geo.pacioos.hawaii.edu/geoserver/wms?', {
-            layers: 'PACIOOS:hi_tt_all_slrxa_econ_2030',
-            format: 'image/png',
-            opacity: 0.5,
-            tiled: 'true'
-        });
-
-        //Another example using PacIOOS GeoServer examples; setting properties first then add layers     
-        var options = {
-            transparent: 'true',
-            format: 'image/png',
-            opacity: 0.5,
-            tiled: 'true'
-            //info_format: 'text/html'
-        };
-
-        //Using a relative url to call layer instead of http
-        var source = L.WMS.source('http://geo.pacioos.hawaii.edu/geoserver/wms?', options);
-        var CREDREASites = source.getLayer('PACIOOS:hi_cred_all_rea_sites');
-        var VegShoreline = source.getLayer('PACIOOS:hi_hcgg_all_shore_veg');
-
-        //Load OSM Buildings then disable it on first load; can only be viewed at certain scales
-        var osmb = new OSMBuildings(map).load();
-        map.removeLayer(osmb);
-
-        //Overlay grouped layers    
-        var groupOverLays = {
-            "Hawaii State GIS": {
-                "Water Quality Monitoring Sites": WaterQualSites,
-                "Na Ala Hele Trails": Trails,
-                "Agricultural Baseline": AgBaseline
-            },
-
-            "PacIOOS Layers": {
-                "Economic Loss from Sea Level Rise (0.5ft) ": EconSeaLevRise,
-                "CRED REA Sites": CREDREASites,
-                "Vegetation Shoreline": VegShoreline
-            },
-
-            "OSM Bldg Classic": {
-                "2.5D Buildings": osmb
-            }
-        };
-
         //add layer switch control
-        L.control.groupedLayers(baseLayers, groupOverLays).addTo(map);
+        L.control.groupedLayers(baseLayers).addTo(map);
 
 
         //add scale bar to map
