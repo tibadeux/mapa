@@ -74,7 +74,7 @@
         setView([19.5, -88], 
         7);
 
-        var defaultBase = L.tileLayer.provider('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+        var defaultBase = L.tileLayer.provider('Stamen.TonerLite').addTo(map);
 
         var baseLayers = {
             'Stamen Toner': defaultBase,
