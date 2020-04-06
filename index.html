@@ -92,7 +92,11 @@
             res=> res.json()
         ).then(
             data => {
-                geojsonlayer= L.geoJson(data).addTo(map)
+                geojsonlayer= L.geoJson(data{
+                    onEachFeature: function(feature, layer){
+                        layer.bindPopup(feature.properties['Layer'])
+                    }
+                }).addTo(map)
                 map.fitBounds(geojsonlayer.getBounds())
             }
         )
