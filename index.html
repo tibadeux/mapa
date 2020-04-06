@@ -89,7 +89,7 @@
             'Stamen Toner': defaultBase
         };
 
-		var shpfile = new L.Shapefile('shp/BD.zip', {
+		var shpfile = L.Shapefile('shp/BD.zip', {
 			onEachFeature: function(feature, layer) {
 				if (feature.properties) {
 					layer.bindPopup(Object.keys(feature.properties).map(function(k) {
