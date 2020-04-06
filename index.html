@@ -92,7 +92,7 @@
             res=> res.json()
         ).then(
             data => {
-                geojsonlayer= L.geoJson(data{
+                geojsonlayer= L.geoJson(data, {
                     onEachFeature: function(feature, layer){
                         layer.bindPopup(feature.properties['Layer'])
                     }
