@@ -283,8 +283,6 @@
                 attribution: '<a href="https://www.usgs.gov">U.S. Geological Survey</a>'
             }
         },
-
-
         Esri: {
             url: 'https://server.arcgisonline.com/ArcGIS/rest/services/{variant}/MapServer/tile/{z}/{y}/{x}',
             options: {

@@ -74,14 +74,14 @@
     <script>
         var map = L.map('map')
 
-        var defaultBase = L.tileLayer.provider('Stamen.TonerLite').addTo(map);
+        var defaultBase = L.tileLayer.provider('OpenStreetMap').addTo(map);
 
         var baseLayers = {
             'USGS TNM': L.tileLayer.provider('USGSTNM'),
             'ESRI Imagery': L.tileLayer.provider('Esri.WorldImagery'),
             'ESRI Ocean Basemap': L.tileLayer.provider('Esri.OceanBasemap'),
             'OSM Topo': L.tileLayer.provider('OpenTopoMap'),
-            'Stamen Toner': defaultBase
+            'OpenStreetMap': defaultBase
         };
 
         geojson_url = "./shp/muni.geojson"
