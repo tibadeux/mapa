@@ -50,11 +50,6 @@
     <link rel="stylesheet" href="CSS/leaflet-control-credits.css" />
     <script type="text/javascript" src="JS/leaflet-control-credits.js"></script>
 
-    <!-- Load Leaflet Shapefile: https://github.com/calvinmetcalf/leaflet.shapefile/blob/gh-pages/index.html -->
-    <script src="JS/catiline.js"></script>
-    <script src="JS/shp.js"></script>
-    <script src="JS/leaflet.shpfile.js"></script>
-
 
     <style>
         body {
@@ -91,21 +86,17 @@
             'Stamen Toner': defaultBase
         };
 
-		L.Shapefile('shp/BD.zip', {
-			onEachFeature: function(feature, layer) {
-				if (feature.properties) {
-					layer.bindPopup(Object.keys(feature.properties).map(function(k) {
-						return k + ": " + feature.properties[k];
-					}).join("<br />"), {
-						maxHeight: 200
-					});
-				}
-			}
-		});
-		shpfile.addTo(m);
+        geojson_url = "./shp/municipios.geojson"
 
-
-
+        fetch(
+            geojson_url
+        ).then(
+            res=> res.json()
+        ).then(
+            data => data {
+                L.geoJson(data).addTo(map)
+            }
+        )
 
 
 
