@@ -93,8 +93,8 @@
         ).then(
             res=> res.json()
         ).then(
-            data => data {
-                L.geoJson(data).addTo(map)
+            data => {
+                geojsonlayer= L.geoJson(data).addTo(map)
             }
         )
 
