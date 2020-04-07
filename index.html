@@ -84,6 +84,27 @@
             'OpenStreetMap': defaultBase
         };
 
+
+        function getColor(unidades) {
+		return d > 1 ? '#800026' :
+				d > 10  ? '#BD0026' :
+				d > 20  ? '#E31A1C' :
+				d > 30  ? '#FC4E2A' :
+				d > 40   ? '#FD8D3C' :
+							'#FFEDA0';
+	    }
+
+	    function style(feature) {
+		return {
+			weight: 2,
+			opacity: 1,
+			color: 'white',
+			dashArray: '3',
+			fillOpacity: 0.7,
+			fillColor: getColor(feature.properties.c_Unidades)
+		};
+	    }
+
         geojson_url = "./shp/muni.geojson"
 
         fetch(
@@ -97,6 +118,7 @@
                         layer.bindPopup(feature.properties['Layer'])
                     }
                 }).addTo(map)
+                style: style,
                 map.fitBounds(geojsonlayer.getBounds())
             }
         )
