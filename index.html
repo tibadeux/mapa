@@ -144,8 +144,7 @@
             toggleDisplay: true,
             minimized: false,
             position: 'bottomleft'
-        }).addTo(map);
-        map.fitBounds(geojsonlayer.getBounds())
+        }).setView(20, -88, 4).addTo(map);
 
         //define Drawing toolbar options
         var options = {
