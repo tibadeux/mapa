@@ -72,7 +72,10 @@
     <div id="map"></div>
 
     <script>
-        var map = L.map('map')
+        var map = L.map('map', {
+            center: [20, -88],
+            zoom: 7
+        });
 
         var defaultBase = L.tileLayer.provider('OpenStreetMap').addTo(map);
 
@@ -119,7 +122,6 @@
                         layer.bindPopup(feature.properties['Layer'])
                     }
                 }).addTo(map)
-                map.fitBounds(geojsonlayer.getBounds())
             }
         )
 
@@ -143,8 +145,7 @@
         var miniMap = new L.Control.MiniMap(Esri_WorldTopoMap, {
             toggleDisplay: true,
             minimized: false,
-            position: 'bottomleft'
-            map.setView(geojsonlayer.getBounds())
+            position: 'bottomleft',
         }).addTo(map);
 
         //define Drawing toolbar options
