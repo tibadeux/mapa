@@ -143,9 +143,8 @@
         var miniMap = new L.Control.MiniMap(Esri_WorldTopoMap, {
             toggleDisplay: true,
             minimized: false,
-            centerFixed: [20, -88],
             position: 'bottomleft'
-        }).addTo(map);
+        }).addTo(map.fitBounds(geojsonlayer.getBounds()));
 
         //define Drawing toolbar options
         var options = {
