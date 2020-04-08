@@ -108,6 +108,43 @@
 		};
 	    }
 
+        function highlightFeature(e) {
+		var layer = e.target;
+
+		layer.setStyle({
+			weight: 5,
+			color: '#666',
+			dashArray: '',
+			fillOpacity: 0.7
+		});
+
+		if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
+			layer.bringToFront();
+		}
+
+		info.update(layer.feature.properties);
+	}
+
+        function resetHighlight(e) {
+            geojson.resetStyle(e.target);
+            info.update();
+        }
+
+        function zoomToFeature(e) {
+            map.fitBounds(e.target.getBounds());
+        }
+
+        function onEachFeature2(feature, layer) {
+            layer.on({
+                mouseover: highlightFeature,
+                mouseout: resetHighlight,
+                click: zoomToFeature
+            });
+        }
+
+
+
+
         geojson_url = "./shp/muni.geojson"
 
         fetch(
@@ -118,6 +155,7 @@
             data => {
                 geojsonlayer= L.geoJson(data, {
                     style: style,
+                    onEachFeature2: onEachFeature2
                     onEachFeature: function(feature, layer){
                         layer.bindPopup(feature.properties['Layer'])
                     }
