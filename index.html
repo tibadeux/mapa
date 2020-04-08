@@ -98,28 +98,15 @@
 	    }
 
 	    function style(feature) {
-            return {
-                weight: 2,
-                opacity: 1,
-                color: 'white',
-                dashArray: '3',
-                fillOpacity: 0.7,
-                fillColor: getColor(feature.properties.c_Unidades)
-            };
+		return {
+			weight: 2,
+			opacity: 1,
+			color: 'white',
+			dashArray: '3',
+			fillOpacity: 0.7,
+			fillColor: getColor(feature.properties.c_Unidades)
+		};
 	    }
-
-        function zoomToFeature(e) {
-            map.fitBounds(e.target.getBounds());
-        }
-
-        function onEachFeature(feature, layer) {
-            layer.on({
-                click: zoomToFeature
-            });
-        }
-
-
-
 
         geojson_url = "./shp/muni.geojson"
 
@@ -132,12 +119,11 @@
                 geojsonlayer= L.geoJson(data, {
                     style: style,
                     onEachFeature: function(feature, layer){
-                    layer.bindPopup(feature.properties["Unidades médicas" + 'c_unidades'])
-                }
-            }).addTo(map)
-                    //onEachFeature: function(feature, layer){
-                        //layer.bindPopup(feature.properties['Layer'])
-
+                        layer.bindPopup(feature.properties['Layer'])
+                    }
+                }).addTo(map)
+            }
+        )
 
 
 
@@ -184,7 +170,6 @@
             link: "https://www.opengislab.com/",
             text: "Leaflet map example by Stephanie @ <u>opengislab.com<u/>"
         }).addTo(map);
-
 
     </script>
 
