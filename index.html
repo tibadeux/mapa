@@ -135,8 +135,8 @@
                     geojsonlayer= L.geoJson(data)}
             );
 
-        var capa2 = L.layerGroup([capa]);
-        
+        var capa2 = L.layerGroup(capa);
+
         //add layer switch control
         L.control.layers(baseLayers, capa2).addTo(map);
 
