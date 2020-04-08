@@ -125,20 +125,8 @@
             }
         )
 
-        var capa =   
-            fetch(
-                geojson_url
-            ).then(
-                res=> res.json()
-            ).then(
-                data => {
-                    geojsonlayer= L.geoJson(data)}
-            );
-
-        var capa2 = L.layerGroup(capa);
-
         //add layer switch control
-        L.control.layers(baseLayers, capa2).addTo(map);
+        L.control.layers(baseLayers).addTo(map);
 
 
         //add scale bar to map
