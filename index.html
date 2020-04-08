@@ -125,11 +125,11 @@
             }
         )
 
-
+        var capa = L.geoJson(geojson_url);
 
 
         //add layer switch control
-        L.control.layers(baseLayers, feature).addTo(map);
+        L.control.layers(baseLayers, capa).addTo(map);
 
 
         //add scale bar to map
