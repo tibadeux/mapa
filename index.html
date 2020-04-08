@@ -119,7 +119,7 @@
                 geojsonlayer= L.geoJson(data, {
                     style: style,
                     onEachFeature: function(feature, layer){
-                        layer.bindPopup(feature.properties['Layer'])
+                        layer.bindPopup(feature.properties['Layer','c_unidades'])
                     }
                 }).addTo(map)
             }
