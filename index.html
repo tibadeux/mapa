@@ -88,6 +88,24 @@
         };
 
 
+        var info = L.control();
+
+        info.onAdd = function (map) {
+            this._div = L.DomUtil.create('div', 'info');
+            this.update();
+            return this._div;
+        };
+
+        info.update = function (props) {
+            this._div.innerHTML = '<h4>Valores de la BD</h4>' +  (props ?
+                '<b>' + props.c_Unidades + '</b><br />'
+                : 'Muevete');
+        };
+
+        info.addTo(map);
+
+
+
         function getColor(unidades) {
 		return unidades > 40 ? '#800026' :
 			   unidades > 30 ? '#BD0026' :
