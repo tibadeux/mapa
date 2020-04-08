@@ -125,7 +125,15 @@
             }
         )
 
-        var capa = data;
+        var capa =   
+            fetch(
+                geojson_url
+            ).then(
+                res=> res.json()
+            ).then(
+                data => {
+                    geojsonlayer= L.geoJson(data)}
+            );
 
 
         //add layer switch control
