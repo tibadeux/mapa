@@ -134,7 +134,7 @@
             map.fitBounds(e.target.getBounds());
         }
 
-        function onEachFeature2(feature, layer) {
+        function onEachFeature(feature, layer) {
             layer.on({
                 mouseover: highlightFeature,
                 mouseout: resetHighlight,
@@ -155,9 +155,9 @@
             data => {
                 geojsonlayer= L.geoJson(data, {
                     style: style,
-                    onEachFeature2: onEachFeature2
-                    onEachFeature: function(feature, layer){
-                        layer.bindPopup(feature.properties['Layer'])
+                    onEachFeature: onEachFeature
+                    //onEachFeature: function(feature, layer){
+                        //layer.bindPopup(feature.properties['Layer'])
                     }
                 }).addTo(map)
             }
